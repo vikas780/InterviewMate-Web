@@ -15,7 +15,7 @@ const errorHandler = (err, req, res, next) => {
 
   if (err.code && err.code === 11000) {
     defaultError.statusCodes = StatusCodes.BAD_REQUEST
-    defaultError.msg = `${Object.keys(err.keyValue)} field has to be unique`
+    defaultError.msg = `${Object.keys(err.keyValue)} already exists`
   }
 
   res.status(defaultError.statusCodes).json({ msg: defaultError.msg })
