@@ -11,6 +11,7 @@ import jobRouter from './Routes/jobRoutes.js'
 
 import notFoundMiddleware from './middleware/NotFound.js'
 import errorHandler from './middleware/ErrorHandler.js'
+import authenticateUser from './middleware/Auth.js'
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'))
@@ -22,7 +23,7 @@ app.use(express.json()) //avialbe json data in contollers
 //   res.send('Hello from Express (Backend!)')
 // })
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/jobs', jobRouter)
+app.use('/api/v1/jobs', authenticateUser, jobRouter)
 
 app.use(notFoundMiddleware)
 app.use(errorHandler)

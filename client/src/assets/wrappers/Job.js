@@ -41,15 +41,20 @@ const Wrapper = styled.article`
       letter-spacing: var(--letterSpacing);
     }
   }
-  .pending {
+
+  .Applied {
+    background: #a9cab3;
+    color: #177d4a;
+  }
+  .Pending {
     background: #fcefc7;
     color: #e9b949;
   }
-  .interview {
+  .Interview {
     background: #e0e8f9;
     color: #647acb;
   }
-  .declined {
+  .Declined {
     color: #d66a6a;
     background: #ffeeee;
   }
