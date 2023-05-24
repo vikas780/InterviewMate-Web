@@ -1,10 +1,21 @@
-import React from 'react'
+import { useEffect } from 'react'
+import { UseAppContext } from '../../context/AppContext.js'
+import { StatsContainer, Loading, Charts } from '../../components'
 
 const Stats = () => {
+  const { ShowStats, isLoading, monthlyApplications } = UseAppContext()
+  useEffect(() => {
+    ShowStats()
+    // eslint-disable-next-line
+  }, [])
+  if (isLoading) {
+    return <Loading center />
+  }
   return (
-    <div>
-      <h2>Stats</h2>
-    </div>
+    <>
+      <StatsContainer />
+      {monthlyApplications.length > 0 && <Charts />}
+    </>
   )
 }
 

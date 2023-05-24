@@ -5,10 +5,23 @@ import Job from './Job'
 import Wrapper from '../assets/wrappers/JobsContainer'
 
 const JobsContainer = () => {
-  const { getAllJobs, jobs, isLoading, page, totalJobs } = UseAppContext()
+  const {
+    getAllJobs,
+    jobs,
+    isLoading,
+
+    totalJobs,
+    search,
+    searchStatus,
+    searchType,
+    sort,
+  } = UseAppContext()
+
   useEffect(() => {
     getAllJobs()
-  }, [])
+    // eslint-disable-next-line
+  }, [search, searchStatus, searchType, sort])
+
   if (isLoading) {
     return <Loading center={'center'} />
   }

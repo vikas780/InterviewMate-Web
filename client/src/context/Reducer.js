@@ -24,6 +24,9 @@ import {
   EDIT_JOB_BEGIN,
   EDIT_JOB_SUCCESS,
   EDIT_JOB_ERROR,
+  SHOW_STATS_BEGIN,
+  SHOW_STATS_SUCCESS,
+  CLEAR_FILTERS,
 } from './Action'
 import { initialState } from './AppContext'
 const reducer = (state, action) => {
@@ -223,6 +226,26 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: 'danger',
       alertString: action.payload.msg,
+    }
+  }
+  if (action.type === SHOW_STATS_BEGIN) {
+    return { ...state, isLoading: true, showAlert: false }
+  }
+  if (action.type === SHOW_STATS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      stats: action.payload.stats,
+      monthlyApplications: action.payload.monthlyApplications,
+    }
+  }
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      search: '',
+      searchStatus: 'All',
+      searchType: 'All',
+      sort: 'latest',
     }
   }
   throw new Error(`No such action : ${action.type}`)
