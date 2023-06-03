@@ -18,7 +18,7 @@
 
 ## Technologies & Tools Used
 - Express.js, MongoDB, Mongoose, React.js 
-- Postman, HTML, Css
+- Postman, HTML, Css, jwt, Context-api, UseReducer
 
 
 <!-- If you have screenshots you'd like to share, include them here. -->
